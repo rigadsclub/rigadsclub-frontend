@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/rigadsclub-frontend/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/rigadsclub-frontend/static/js/main.e3534516.chunk.js",
+    "main.js.map": "/rigadsclub-frontend/static/js/main.e3534516.chunk.js.map",
+    "runtime-main.js": "/rigadsclub-frontend/static/js/runtime-main.84017526.js",
+    "runtime-main.js.map": "/rigadsclub-frontend/static/js/runtime-main.84017526.js.map",
+    "static/js/2.40a26d34.chunk.js": "/rigadsclub-frontend/static/js/2.40a26d34.chunk.js",
+    "static/js/2.40a26d34.chunk.js.map": "/rigadsclub-frontend/static/js/2.40a26d34.chunk.js.map",
+    "static/js/3.8e99958f.chunk.js": "/rigadsclub-frontend/static/js/3.8e99958f.chunk.js",
+    "static/js/3.8e99958f.chunk.js.map": "/rigadsclub-frontend/static/js/3.8e99958f.chunk.js.map",
+    "index.html": "/rigadsclub-frontend/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/rigadsclub-frontend/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.40a26d34.chunk.js.LICENSE.txt": "/rigadsclub-frontend/static/js/2.40a26d34.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/rigadsclub-frontend/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84017526.js",
+    "static/js/2.40a26d34.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.e3534516.chunk.js"
+  ]
+}
