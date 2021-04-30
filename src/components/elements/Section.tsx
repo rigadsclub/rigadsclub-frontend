@@ -12,6 +12,10 @@ export interface SectionProps {
 }
 
 const useStyles = createUseStyles<string, SectionProps>({
+    section: {
+        marginTop: 20,
+        marginBottom: 20,
+    },
     sectionHeader: {
         display: "flex",
         flexDirection: "row",
@@ -30,7 +34,7 @@ const useStyles = createUseStyles<string, SectionProps>({
 export default function Section(props: SectionProps) {
     const classes = useStyles(props);
     return (
-        <>
+        <div className={classes.section}>
             <div className={classes.sectionHeader}>
                 <p className={classes.title}>
                     <span className={classes.slashes}>{"//"}</span> {props.title}
@@ -40,6 +44,6 @@ export default function Section(props: SectionProps) {
                 </Button>
             </div>
             {props.children}
-        </>
+        </div>
     )
 }
