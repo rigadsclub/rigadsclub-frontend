@@ -4,6 +4,7 @@ import ClubLogo from "../elements/ClubLogo";
 import LinkedInIcon from "../elements/LinkedInIcon";
 import KaggleIcon from "../elements/KaggleIcon";
 import Button from "../elements/Button";
+import Contents from "../elements/Contents";
 
 const useStyles = createUseStyles({
     header: {
@@ -11,12 +12,6 @@ const useStyles = createUseStyles({
         color: "white",
         margin: 0,
         padding: 0,
-    },
-    content: {
-        width: '100%',
-        maxWidth: 1100,
-        margin: '0 auto',
-        display: 'flex'
     },
     motto: {
         fontSize: 40,
@@ -82,7 +77,7 @@ export default function Header() {
     const classes = useStyles();
     return (
         <header className={classes.header}>
-            <div className={classes.content}>
+            <Contents>
                 <div className={classes.vertical}>
                     <div className={classes.horizontal}>
                         <p className={classes.motto}>
@@ -116,7 +111,7 @@ export default function Header() {
                         }
                     </div>
                 </div>
-            </div>
+            </Contents>
         </header>
     );
 }
