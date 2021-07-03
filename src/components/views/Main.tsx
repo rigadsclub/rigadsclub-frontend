@@ -1,8 +1,11 @@
 import Contents from "../elements/Contents";
 import {createUseStyles} from "react-jss";
 import Section from "../elements/Section";
-import {ClubColor} from "../../types/ClubColor";
 import EventTile, {EventTileProps} from "../elements/EventTile";
+import {ClubColor, ClubMember, ExternalLinkKind} from "../../types/types";
+import UserAvatar, {UserAvatarSize} from "../elements/UserAvatar";
+import LinkedInIcon from "../elements/LinkedInIcon";
+import MemberTile from "../elements/MemberTile";
 
 const useStyles = createUseStyles({
     main: {
@@ -18,9 +21,16 @@ const useStyles = createUseStyles({
         paddingTop: 40,
     },
     events: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-between",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    avatars: {
+        display: "flex",
+        flexDirection: "row",
+    },
+    member: {
+        marginRight: 64,
     },
 });
 
@@ -53,6 +63,68 @@ const Events: Array<EventTileProps> = [
     },
 ];
 
+const Members: Array<ClubMember> = [
+    {
+        firstName: "Dmitry",
+        lastName: "Yemelyanov",
+        avatar: "https://rigadsclub.com/images/avatar/dyemelyanov.jpg",
+        links: [
+            {
+                kind: ExternalLinkKind.LINKEDIN,
+                url: "https://www.linkedin.com/in/datasciencedj"
+            },
+            {
+                kind: ExternalLinkKind.KAGGLE,
+                url: "https://www.kaggle.com/dmitryyemelyanov"
+            }
+        ]
+    },
+    {
+        firstName: "Kate",
+        lastName: "Kuznecova",
+        avatar: "https://rigadsclub.com/images/avatar/kkuznecova.jpeg",
+        links: [
+            {
+                kind: ExternalLinkKind.LINKEDIN,
+                url: "https://www.linkedin.com/in/kate-kuznecova/"
+            },
+        ]
+    },
+    {
+        firstName: "Cees",
+        lastName: "Roele",
+        avatar: "https://rigadsclub.com/images/avatar/croele.jpg",
+        links: [
+            {
+                kind: ExternalLinkKind.LINKEDIN,
+                url: "https://www.linkedin.com/in/ceesroele/"
+            },
+        ]
+    },
+    {
+        firstName: "Arturs",
+        lastName: "Valujevs",
+        avatar: "https://rigadsclub.com/images/avatar/avalujevs.png",
+        links: [
+            {
+                kind: ExternalLinkKind.LINKEDIN,
+                url: "https://www.linkedin.com/in/valujevs/"
+            },
+        ]
+    },
+    {
+        firstName: "Dmitry",
+        lastName: "Trizna",
+        avatar: "https://rigadsclub.com/images/avatar/dtrizna.jpg",
+        links: [
+            {
+                kind: ExternalLinkKind.LINKEDIN,
+                url: "https://www.linkedin.com/in/dmitrijs-trizna-b6776883/"
+            },
+        ]
+    },
+];
+
 export default function Main() {
     const classes = useStyles();
     return (
@@ -72,6 +144,13 @@ export default function Main() {
             <div className={classes.members}>
                 <Contents>
                     <Section title={"MEMBERS"} slashColor={ClubColor.PURPLE} darkMode />
+                    <div className={classes.avatars}>
+                        {Members.map((member, i) => (
+                            <div className={classes.member} key={`member-${i}`}>
+                                <MemberTile {...member} />
+                            </div>
+                        ))}
+                    </div>
                 </Contents>
             </div>
         </>

@@ -1,15 +1,6 @@
 import {createUseStyles} from "react-jss";
-
-export interface EventTileProps {
-    id: number,
-    title: string,
-    date: Date,
-    guests?: EventGuest[],
-}
-
-export interface EventGuest {
-    avatar?: string;
-}
+import {ClubEvent} from "../../types/types";
+import UserAvatar, {UserAvatarSize} from "./UserAvatar";
 
 const useStyles = createUseStyles<string, {isFutureEvent:boolean}>({
     event: {
@@ -47,22 +38,10 @@ const useStyles = createUseStyles<string, {isFutureEvent:boolean}>({
     eventGuests: {
         display: "flex",
         flexDirection: "row",
-    },
-    eventGuestAvatar: {
-        marginRight: 10,
-        width: 70,
-        height: 70,
-        borderRadius: '50%',
-        border: 'solid 2px black',
-        overflow: "hidden",
-        display: "flex",
-    },
-    eventGuestAvatarImage: {
-        width: "100%",
-        height: "100%",
-        objectFit: "cover"
     }
 });
+
+export type EventTileProps = ClubEvent;
 
 export default function EventTile(props: EventTileProps) {
     const isFutureEvent = props.date.getTime() > Date.now();
@@ -75,14 +54,13 @@ export default function EventTile(props: EventTileProps) {
                 {props.guests && <p className={classes.eventGuestsLabel}>Guests</p>}
                 {
                     props.guests && (<div className={classes.eventGuests}>
-                        {props.guests.map((guest, i) => <div
-                            id={`guest-${i}`}
-                            className={classes.eventGuestAvatar}>
-                            <img
-                                className={classes.eventGuestAvatarImage}
-                                src={guest.avatar}
-                            />
-                        </div>)}
+                        {
+                            props.guests.map((guest, i) => <UserAvatar
+                                key={`guest-${i}`}
+                                size={UserAvatarSize.S }
+                                {...guest}
+                            />)
+                        }
                     </div>)
                 }
             </div>

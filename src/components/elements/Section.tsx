@@ -1,7 +1,7 @@
 import {createUseStyles} from "react-jss";
-import {ClubColor} from "../../types/ClubColor";
 import {ReactNode} from "react";
 import Button from "./Button";
+import {ClubColor} from "../../types/types";
 
 export interface SectionProps {
     title: string;
