@@ -1,9 +1,10 @@
-import {ClubMember, EnumDictionary, ExternalLinkKind} from "../../types/types";
+import React from "react";
+
+import {ClubMember, EnumDictionary, ExternalLinkKind} from "../../../types/types";
 import {createUseStyles} from "react-jss";
-import UserAvatar, {UserAvatarSize} from "./UserAvatar";
-import LinkedInIcon from "./LinkedInIcon";
-import React, {FunctionComponent} from "react";
-import KaggleIcon from "./KaggleIcon";
+import UserAvatar, {UserAvatarSize} from "../UserAvatar";
+import LinkedInIcon from "../LinkedInIcon";
+import KaggleIcon from "../KaggleIcon";
 
 const useStyles = createUseStyles({
     avatar: {
@@ -40,7 +41,7 @@ const icons: EnumDictionary<ExternalLinkKind, React.FunctionComponent<React.SVGP
     [ExternalLinkKind.KAGGLE]: KaggleIcon,
 };
 
-export default function MemberTile(props: MemberTileProps) {
+export function MemberTile(props: MemberTileProps) {
     const classes = useStyles();
     return (
         <div className={classes.avatar}>

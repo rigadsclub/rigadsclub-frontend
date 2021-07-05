@@ -24,6 +24,14 @@ export interface ClubEventGuest extends UserWithAvatar {
 
 }
 
+export interface ClubProject {
+    title: string;
+    subtitle: string;
+    image: string;
+    participants: UserWithAvatar[];
+    sort: number;
+}
+
 export interface ClubMember extends UserWithAvatar {
     firstName: string;
     lastName: string;

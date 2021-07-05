@@ -1,11 +1,10 @@
 import Contents from "../elements/Contents";
 import {createUseStyles} from "react-jss";
 import Section from "../elements/Section";
-import EventTile, {EventTileProps} from "../elements/EventTile";
-import {ClubColor, ClubMember, ExternalLinkKind} from "../../types/types";
-import UserAvatar, {UserAvatarSize} from "../elements/UserAvatar";
-import LinkedInIcon from "../elements/LinkedInIcon";
-import MemberTile from "../elements/MemberTile";
+import {MemberTile, EventTile, EventTileProps, ProjectTile} from "../elements/tiles";
+import {ClubColor, ClubMember, ClubProject, ExternalLinkKind} from "../../types/types";
+import Button from "../elements/Button";
+import React from "react";
 
 const useStyles = createUseStyles({
     main: {
@@ -14,7 +13,7 @@ const useStyles = createUseStyles({
         margin: 0,
         paddingTop: 40,
     },
-    members: {
+    membersSection: {
         background: "black",
         color: "white",
         margin: 0,
@@ -25,7 +24,12 @@ const useStyles = createUseStyles({
         flexDirection: "row",
         justifyContent: "space-between",
     },
-    avatars: {
+    projects: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    members: {
         display: "flex",
         flexDirection: "row",
     },
@@ -61,6 +65,45 @@ const Events: Array<EventTileProps> = [
             {avatar: "https://rigadsclub.com/images/events/27/raoul_fasel.jpg"},
         ]
     },
+];
+
+const Projects: Array<ClubProject> = [
+    {
+        title: 'Generate "Mascaron" Art Nouveau Riga Faces',
+        subtitle: 'This project emphasizes the beauty of masks, which are around us at so many art nouveau buildings in Riga. Browse interactive map and discover remarkable “Riga Faces”.',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Sculpture_on_fa%C3%A7ade_facing_River_Ill%2C_Palais_Rohan_de_Strasbourg.jpg/1280px-Sculpture_on_fa%C3%A7ade_facing_River_Ill%2C_Palais_Rohan_de_Strasbourg.jpg',
+        sort: 3,
+        participants: [
+            {
+                avatar: "https://rigadsclub.com/images/avatar/dyemelyanov.jpg"
+            }
+        ]
+    },
+    {
+        title: 'Predict Riga Real Estate Property Prices',
+        subtitle: 'We have built a prediction model that makes use of existing market data of sale and rent prices to estimate the value of any other real estate property located in Riga.',
+        image: 'https://rigadsclub.com/images/riga/rigaoldtown.jpg',
+        sort: 2,
+        participants: [
+            {
+                avatar: "https://rigadsclub.com/images/avatar/dyemelyanov.jpg"
+            },
+            {
+                avatar: "https://rigadsclub.com/images/avatar/dyachmenev.jpeg"
+            }
+        ]
+    },
+    {
+        title: 'Colorize Old Black&White Photos',
+        subtitle: 'We have built a prediction model that makes use of existing market data of sale and rent prices to estimate the value of any other real estate property located in Riga.',
+        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Sculpture_on_fa%C3%A7ade_facing_River_Ill%2C_Palais_Rohan_de_Strasbourg.jpg/1280px-Sculpture_on_fa%C3%A7ade_facing_River_Ill%2C_Palais_Rohan_de_Strasbourg.jpg',
+        sort: 1,
+        participants: [
+            {
+                avatar: "https://rigadsclub.com/images/avatar/dyemelyanov.jpg"
+            }
+        ]
+    }
 ];
 
 const Members: Array<ClubMember> = [
@@ -131,26 +174,44 @@ export default function Main() {
         <>
             <div className={classes.main}>
                 <Contents>
-                    <Section title={"OUR EVENTS"} slashColor={ClubColor.YELLOW}>
+                    <Section
+                        title={"OUR EVENTS"}
+                        slashColor={ClubColor.YELLOW}
+                    >
                         <div className={classes.events}>
                             {Events
                                 .sort((a, b) => b.id - a.id)
                                 .map(event => <EventTile key={`event-${event.id}`} {...event} />)}
                         </div>
                     </Section>
-                    <Section title={"OUR PROJECTS"} slashColor={ClubColor.GREEN} />
+                    <Section
+                        title={"OUR PROJECTS"}
+                        slashColor={ClubColor.GREEN}
+                        >
+                        <div className={classes.projects}>
+                            {Projects
+                                .sort((a, b) => b.sort - a.sort)
+                                .map((project, i) => <ProjectTile key={`project-${i}`} {...project} />)}
+                        </div>
+                    </Section>
                 </Contents>
             </div>
-            <div className={classes.members}>
+            <div className={classes.membersSection}>
                 <Contents>
-                    <Section title={"MEMBERS"} slashColor={ClubColor.PURPLE} darkMode />
-                    <div className={classes.avatars}>
-                        {Members.map((member, i) => (
-                            <div className={classes.member} key={`member-${i}`}>
-                                <MemberTile {...member} />
-                            </div>
-                        ))}
-                    </div>
+                    <Section
+                        title={"MEMBERS"}
+                        slashColor={ClubColor.PURPLE}
+                        darkMode
+                        extraButton={<Button color={"white"} borderColor={"white"}>Become a Member</Button>}
+                    >
+                        <div className={classes.members}>
+                            {Members.map((member, i) => (
+                                <div className={classes.member} key={`member-${i}`}>
+                                    <MemberTile {...member} />
+                                </div>
+                            ))}
+                        </div>
+                    </Section>
                 </Contents>
             </div>
         </>

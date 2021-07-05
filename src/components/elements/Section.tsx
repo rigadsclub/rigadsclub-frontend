@@ -8,6 +8,7 @@ export interface SectionProps {
     darkMode?: boolean;
     slashColor: ClubColor;
     children?: ReactNode;
+    extraButton?: ReactNode;
     showAll?: string;
 }
 
@@ -29,6 +30,14 @@ const useStyles = createUseStyles<string, SectionProps>({
     slashes: {
         color: props => props.slashColor,
     },
+    controls: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "flex-end"
+    },
+    extraButton: {
+        marginRight: 15,
+    }
 });
 
 export default function Section(props: SectionProps) {
@@ -39,9 +48,12 @@ export default function Section(props: SectionProps) {
                 <p className={classes.title}>
                     <span className={classes.slashes}>{"//"}</span> {props.title}
                 </p>
-                <Button color={props.darkMode ? "white" : "black"} borderColor={props.darkMode ? "white" : "black"}>
-                    Show all
-                </Button>
+                <div className={classes.controls}>
+                    {props.extraButton ? <div className={classes.extraButton}>{props.extraButton}</div> : null}
+                    <Button color={props.darkMode ? "white" : "black"} borderColor={props.darkMode ? "white" : "black"}>
+                        Show all
+                    </Button>
+                </div>
             </div>
             {props.children}
         </div>

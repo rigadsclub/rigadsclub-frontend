@@ -1,19 +1,12 @@
 import {createUseStyles} from "react-jss";
-import {ClubEvent} from "../../types/types";
-import UserAvatar, {UserAvatarSize} from "./UserAvatar";
+import {ClubEvent} from "../../../types/types";
+import UserAvatar, {UserAvatarSize} from "../UserAvatar";
+import Frame from "./Frame";
 
 const useStyles = createUseStyles<string, {isFutureEvent:boolean}>({
-    event: {
-        width: '33%',
-        position: "relative",
-        color: "black",
-        fontWeight: "bold",
-        height: 344,
-        background: props => props.isFutureEvent ? "#f8e71c" : "white",
-        border: 'solid 2px black',
-        marginRight: 10,
-    },
     eventContent: {
+        height: 250,
+        background: props => props.isFutureEvent ? "#f8e71c" : "white",
         padding: '30px 28px 25px 24px',
     },
     eventHeader: {
@@ -27,13 +20,7 @@ const useStyles = createUseStyles<string, {isFutureEvent:boolean}>({
         fontSize: 12,
     },
     eventDate: {
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-        right: 0,
         fontSize: 12,
-        padding: '23px 14px 14px 24px',
-        borderTop: 'solid 1px black',
     },
     eventGuests: {
         display: "flex",
@@ -43,11 +30,17 @@ const useStyles = createUseStyles<string, {isFutureEvent:boolean}>({
 
 export type EventTileProps = ClubEvent;
 
-export default function EventTile(props: EventTileProps) {
+export function EventTile(props: EventTileProps) {
     const isFutureEvent = props.date.getTime() > Date.now();
     const classes = useStyles({isFutureEvent});
     return (
-        <div className={classes.event}>
+        <Frame
+            taglineColor={isFutureEvent ? '#f8e71c' : 'white'}
+            tagline={(
+            <p className={classes.eventDate}>
+                {props.date.toLocaleDateString()} {props.date.toLocaleTimeString()}
+            </p>
+        )}>
             <div className={classes.eventContent}>
                 <p className={classes.eventHeader}>{isFutureEvent && "UPCOMING // "}meetup #{props.id}</p>
                 <p className={classes.eventTitle}>{props.title}</p>
@@ -64,9 +57,6 @@ export default function EventTile(props: EventTileProps) {
                     </div>)
                 }
             </div>
-            <p className={classes.eventDate}>
-                {props.date.toLocaleDateString()} {props.date.toLocaleTimeString()}
-            </p>
-        </div>
+        </Frame>
     )
 }

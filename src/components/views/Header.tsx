@@ -63,7 +63,7 @@ const useStyles = createUseStyles({
         color: "rgba(255, 255, 255, 0.5)",
     },
     navItem: {
-        paddingRight: 15,
+        marginRight: 15,
     },
     controls: {
         display: "flex",
@@ -118,10 +118,10 @@ export default function Header() {
                         </div>
                         <div className={classes.horizontal}>
                             <div className={classes.navItem}>
-                                <Button>Login</Button>
+                                <Button>Member Login</Button>
                             </div>
                             <div className={classes.navItem}>
-                                <Button>Sign up</Button>
+                                <Button background={`rgba(255, 255, 255, 0.2)`}>Become a Member</Button>
                             </div>
 
                         </div>
