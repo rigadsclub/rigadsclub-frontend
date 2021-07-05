@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/rigadsclub-frontend/static/css/main.fd81dcb1.chunk.css",
-    "main.js": "/rigadsclub-frontend/static/js/main.ac4e66a0.chunk.js",
-    "main.js.map": "/rigadsclub-frontend/static/js/main.ac4e66a0.chunk.js.map",
+    "main.js": "/rigadsclub-frontend/static/js/main.d241c072.chunk.js",
+    "main.js.map": "/rigadsclub-frontend/static/js/main.d241c072.chunk.js.map",
     "runtime-main.js": "/rigadsclub-frontend/static/js/runtime-main.e3047f1b.js",
     "runtime-main.js.map": "/rigadsclub-frontend/static/js/runtime-main.e3047f1b.js.map",
     "static/js/2.a0405a96.chunk.js": "/rigadsclub-frontend/static/js/2.a0405a96.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.e3047f1b.js",
     "static/js/2.a0405a96.chunk.js",
     "static/css/main.fd81dcb1.chunk.css",
-    "static/js/main.ac4e66a0.chunk.js"
+    "static/js/main.d241c072.chunk.js"
   ]
 }
